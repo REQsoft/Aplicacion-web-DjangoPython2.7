@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Descripción</td>
+            <td>Longitud</td>
+            <td>Latitud</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if localizacion %}
+        {% for localizacion in localizacion %}
+        
+        <tr>
+            <td>{{localizacion.id}}</td>
+            <td>{{localizacion.descripcion}}</td>
+            <td>{{localizacion.longitud}}</td>
+            <td>{{localizacion.latitud}}</td>
+            <td><a href="{% url 'principal:localizacion_editar' localizacion.id %}"><button class="btn btn-primary">Editar</button></a>
+            </td>
+            <td><a href="{% url 'principal:localizacion_eliminar' localizacion.id %}"><button class="btn btn-danger">Eliminar</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No existen localizacion</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

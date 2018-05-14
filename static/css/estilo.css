@@ -1,0 +1,199 @@
+/* creacion del estilo para cada elemento utilizaco en la interfaz */
+.navbar 
+{
+    color: #fff !important;
+    background-color:#242D3C; 
+}
+
+nav.navbar.navbar-full.navbar-dark
+{
+    padding-right: 20px;
+}
+
+.contenido
+{
+    position: fixed;
+    background-color:#35A4AC; 
+    color: white;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+.texto
+{
+    position: absolute;
+    color:white;
+    font-size: 14em;
+    top: 50%;
+    margin-top: -200px;
+    left: 50%;
+    margin-left: -556px;
+    outline: 1px solid black;
+}
+.nueva_conexion
+{
+    position: fixed;
+    background-color: #E1E6EC;
+    height: 100%;
+    margin: auto;
+    align-content: center;
+    /*border-radius: 4px;
+    border-color: black;*/
+}
+.nueva_form
+{
+    position: relative;
+    top: 50%;
+    margin-top: -280px;
+    /*left: 50%;                
+    margin-left: -600px;*/
+
+}
+.conexiones
+{
+    position: fixed;
+    background-color: #E1E6EC;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+.servicios
+{
+    position: fixed;
+    background-color: #E1E6EC;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+.footer 
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color:#242D3C; 
+}
+
+@media (max-width: 62em) 
+{
+    .navbar-nav 
+    {
+        padding-top: .425rem;
+        padding-left: 0.75rem;
+    }
+
+    .navbar-nav .nav-item 
+    {
+        float: none;
+    }
+
+    .navbar-brand 
+    {
+        float: right;
+    }
+
+    .navbar-brand,
+    .navbar-nav .nav-item 
+    {
+        display: block;
+    }
+
+    .navbar-nav .nav-item + .nav-item 
+    {
+        margin-left: 0;
+    }
+
+    .dropdown-menu 
+    {
+        position: relative;
+        float: none;
+    }
+    .footer
+    {
+        height: 40px;
+    }
+}
+@media screen and (min-width: 980px) and (max-width: 1200px)
+{
+    h1.texto
+    {
+        position: absolute;
+        color:white;
+        font-size: 12em;
+        top: 50%;
+        margin-top: -185px;
+        left: 50%;
+        margin-left: -476px;
+        outline: 1px solid black;
+    }
+}
+@media screen and (min-width: 830px) and (max-width: 980px) 
+{
+    h1.texto
+    {
+        position: absolute;
+        color:white;
+        font-size: 10em;
+        top: 50%;
+        margin-top: -167px;
+        left: 50%;
+        margin-left: -397px;
+        outline: 1px solid black;
+    }
+}
+@media screen and (min-width: 670px) and (max-width: 830px) 
+{
+    h1.texto
+    {
+        position: absolute;
+        color:white;
+        font-size: 8em;
+        top: 50%;
+        margin-top: -150px;
+        left: 50%;
+        margin-left: -315px;
+        outline: 1px solid black;
+    }
+}
+@media screen and (min-width: 510px) and (max-width: 670px) 
+{
+    h1.texto
+    {
+        position: absolute;
+        color:white;
+        font-size: 6em;
+        top: 50%;
+        margin-top: -132px;
+        left: 50%;
+        margin-left: -236px;
+        outline: 1px solid black;
+    }
+}
+@media screen and (min-width: 350px) and (max-width: 510px) 
+{
+    h1.texto
+    {
+        position: absolute;
+        color:white;
+        font-size: 4em;
+        top: 50%;
+        margin-top: -115px;
+        left: 50%;
+        margin-left: -160px;
+        outline: 1px solid black;
+    }
+}
+@media screen and (min-width: 280px) and (max-width: 350px) 
+{
+    h1.texto
+    {
+        position: absolute;
+        color:white;
+        font-size: 2em;
+        top: 50%;
+        margin-top: -98px;
+        left: 50%;
+        margin-left: -82px;
+        outline: 1px solid black;
+    }
+}

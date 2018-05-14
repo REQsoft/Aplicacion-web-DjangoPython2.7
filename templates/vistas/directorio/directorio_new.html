@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<style>
+    h1
+    {
+        margin-left: 90px;
+        font-size: 50px;
+    }
+    label
+    {
+
+        float: left;
+        clear: left;
+        width: 150px;
+        text-align: right;
+        margin-right: 10px;
+        margin-left: 50px;
+    }
+    input 
+    {
+
+        float: left;
+        width: 200px;
+    }
+    button
+    {
+        position: relative;
+        margin-top: 40px;
+        right: 73px;
+        float: left;
+    }
+    #id_foto
+    {
+        width: 350px;
+    }
+</style>
+<form enctype="multipart/form-data" method="post">{% csrf_token %}
+    <h1>Agregar Directorio</h1><br>
+    <div class="form-group">
+        <label>Dependencia:</label>{{form.dependencia}}
+        <label>Extensión:</label>{{form.extension}}
+        <label>Línea Directa:</label>{{form.linea_directa}}
+    </div>
+    <div><button class="btn btn-primary" type="submit" onclick="selec();" >Guardar</button></div>
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Descripcion</td>
+            <td>Fecha</td>
+            <td>Imagen</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if articulos %}
+        {% for articulos in articulos %}
+        
+        <tr>
+            <td>{{articulos.id}}</td>
+            <td>{{articulos.descripcion}}</td>
+            <td>{{articulos.fecha}}</td>
+            <td>{{articulos.foto}}</td>
+            <td><a class="btn btn-primary" href="{% url 'principal:articulos_editar' articulos.id %}">Editar</a>
+            </td>
+            <td><a class="btn btn-danger" href="{% url 'principal:articulos_eliminar' articulos.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No existen articulos</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

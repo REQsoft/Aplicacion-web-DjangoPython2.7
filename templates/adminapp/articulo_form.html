@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<script>
+    window.onload = function()  {        
+        document.getElementById("id_fecha").setAttribute("type","date");
+    }
+    $("#id_fecha").click(function(){
+        $(this).prop('type', 'date');
+    });
+
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        var options={
+            //format: 'mm/dd/yyyy',
+            format: 'yyyy/dd/mm',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+    })
+</script>
+<style>
+    h1
+    {
+        margin-left: 90px;
+        font-size: 50px;
+    }
+    label
+    {
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 150px;
+        text-align: right;
+        margin-right: 10px;
+    }
+    input 
+    {
+        display: inline-block;
+        float: left;
+        width: 200px;
+    }
+    button
+    {
+        margin-left: 285px;
+    }
+    #id_foto
+    {
+        width: 350px;
+    }
+</style>
+<form enctype="multipart/form-data" method="post">{% csrf_token %}
+    <h1>Agregar Artículo</h1><br>
+    <div class="form-group">
+        <label>Descripción:</label>{{form.descripcion}}<br><br>
+        <label>Fecha:</label><!--<input type="date" name="fecha" id="id_fecha">-->
+        {{form.fecha}}<br><br>
+        <label>Foto:</label>{{form.foto}}<br>
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Guardar</button> 
+    </div>
+</form>
+{% endblock %}

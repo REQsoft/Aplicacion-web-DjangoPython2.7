@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nombre</td>
+            <td>Motor</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if conexion %}
+        {% for conexion in conexion %}
+        
+        <tr>
+            <td>{{conexion.id}}</td>
+            <td>{{conexion.nombre}}</td>
+            <td>{{conexion.motor}}</td>
+            <td><a href="{% url 'principal:conexion_editar' conexion.id %}"><button class="btn btn-primary">Editar</button></a>
+            </td>
+            <td><a href="{% url 'principal:conexion_eliminar' conexion.id %}"><button class="btn btn-danger">Eliminar</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No existen conexiones</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<style>
+    .param
+    {
+     height: 800px;   
+    }
+    table
+    {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -250px;
+        margin-left: -160px;  
+        width: 600px;
+        height: 500px;
+    }
+    h1
+    {
+        margin-left: 340px;
+        font-size: 50px;
+    } 
+    #label
+    {
+        font-size: 20px;
+        width: 300px;
+        padding-top: 10px;
+    }
+    #label1
+    {
+        font-size: 14px;
+        width: 300px;
+        padding-top: 10px;
+    }
+</style>
+<body>
+   <div class="param">
+    <h1>Parametrización</h1>
+    <table>
+        <thead>       
+
+        </thead>
+        <tbody>
+            {% if parametrizacion %}
+            {% for parametrizacion in parametrizacion %}
+
+            <tr>
+                <td id="label">Nombre:</td>
+                <td id="label1">{{parametrizacion.nombre}}</td>
+            </tr>
+            <tr>
+                <td id="label">Lema:</td>
+                <td id="label1">{{parametrizacion.lema}}</td>
+            </tr>
+            <tr>
+                <td id="label">Imagen:</td>
+                <td>
+                    <img src="media/{{parametrizacion.imagen.url}}"   style="width:200px;height:200px">               
+                </td>
+            </tr>
+            <tr>
+                <td id="label">Informacion:</td>
+                <td id="label1">{{parametrizacion.informacion}}</td>
+            </tr>
+                  <tr>
+                <td id="label">Estado Directorio:</td>
+                <td id="label1">{{parametrizacion.estado_directorio}}</td>
+            </tr>
+            <tr>
+                <td id="label">Estado Articulo:</td>
+                <td id="label1">{{parametrizacion.estado_articulo}}</td>
+            </tr>
+            <tr>
+                <td id="label">Estado Localización:</td>
+                <td id="label1">{{parametrizacion.estado_localizacion}}</td>
+            </tr>
+            <tr>
+                <td id="label">Estado Hoja de Vida:</td>
+                <td id="label1">{{parametrizacion.hoja_de_vida}}</td>
+            </tr>
+             <tr>
+                <td id="label">Estado Oferta Academica:</td>
+                <td id="label1">{{parametrizacion.oferta_academica}}</td>
+            </tr>
+             <tr>
+                <td id="label">Estado Notas:</td>
+                <td id="label1">{{parametrizacion.nota_semestre}}</td>
+            </tr>
+             <tr>
+                <td id="label">Estado Información Materia:</td>
+                <td id="label1">{{parametrizacion.informacion_materia}}</td>
+            </tr>
+             <tr>
+                <td id="label">Estado Lista Estudiantes:</td>
+                <td id="label1">{{parametrizacion.lista_estudiantes}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><a href="{% url 'principal:parametrizacion_editar' parametrizacion.id %}"><br><button class="btn1 btn btn-primary">Editar</button></a><br><br>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <h1>No existe parametrizacion</h1>
+            {% endif %}
+        </tbody>
+    </table>
+    </div>
+</body>
+{% endblock %}

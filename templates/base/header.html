@@ -1,0 +1,58 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %} 
+<style>
+    
+</style>
+<header>
+    {% load admin_menu %}
+    {% block nav_links %}
+    <a class="navbar-brand" id="inicio" href="{% url 'principal:bienvenido' %}">
+        <h4 class="" onclick="inicio();" style="padding-left: 5px"><strong style="padding-left: 12px">Administración</strong></h4>
+    </a>
+    <br><br><br>
+    <li class="nav-item dropdown">
+        <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conexiones</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li><a class="dropdown-item" id="nueva" href="{% url 'principal:conexion_crear' %}" onclick="nueva();">Agregar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:conexion_listar' %}" onclick="conexiones();">Listar</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link" id="navbarDropdown2" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li><a class="dropdown-item" id="nueva"  href="{% url 'principal:servicio_crear' %}"  onclick="nueva();">Agregar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:servicio_listar' %}" onclick="conexiones();">Listar</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link" id="navbarDropdown2" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Directorio Telefónico</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li><a class="dropdown-item" id="nueva"  href="{% url 'principal:directorio_crear' %}"  onclick="nueva();">Agregar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:directorio_listar' %}">Listar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:directorioList' %}">API</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link" id="navbarDropdown2" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Artículos Extraviados</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li><a class="dropdown-item" id="nueva"  href="{% url 'principal:articulo_crear' %}"  onclick="nueva();">Agregar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:articulo_listar' %}" onclick="conexiones();">Listar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:articuloList' %}">API</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link" id="navbarDropdown2" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Georreferenciación</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li><a class="dropdown-item" id="nueva"  href="{% url 'principal:localizacion_crear' %}"  onclick="nueva();">Agregar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:localizacion_listar' %}" onclick="conexiones();">Listar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:localizacionList' %}">API</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link" id="navbarDropdown2" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Parametrizacion</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li><a class="dropdown-item" id="nueva"  href="{% url 'principal:parametrizacion_listar' %}">Listar</a></li>
+            <li><a class="dropdown-item" href="{% url 'principal:parametrizacionList' %}">API</a></li>
+        </ul>
+    </li> 
+    {% endblock nav_links %}
+</header>

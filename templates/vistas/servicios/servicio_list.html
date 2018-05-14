@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Descripción</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if servicio %}
+        {% for servicio in servicio %}
+        
+        <tr>
+            <td>{{servicio.id}}</td>
+            <td>{{servicio.nombre}}</td>
+            <td><a href="{% url 'principal:servicio_editar' servicio.id %}"><button class="btn btn-primary">Editar</button></a>
+            <td><a href="{% url 'principal:servicio' servicio.id %}"><button class="btn btn-success">Ejecutar Api</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No existen servicios</h1> 
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

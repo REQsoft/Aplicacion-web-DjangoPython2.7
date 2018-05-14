@@ -1,0 +1,16 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+{% load admin_menu %}
+{% block nav_links %}
+{% autoescape off %}{% menu %}
+<li>
+    <a href="/some/url">
+        <i class="fa fa-dashboard"></i> <span>Home</span>
+    </a>
+</li>
+<li>
+    <a href="/some/url">
+        <i class="fa fa-user"></i> <span>Users</span>
+    </a>
+</li>
+{% endautoescape %}
+{% endblock nav_links %}

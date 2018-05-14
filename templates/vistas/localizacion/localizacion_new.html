@@ -1,0 +1,85 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+    h1
+    {
+        margin-left: 50px;
+        font-size: 50px;
+    }
+    label
+    {
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 150px;
+        text-align: right;
+        margin-right: 10px;
+    }
+    input 
+    {
+        display: inline-block;
+        float: left;
+        width: 200px;
+    }
+    button
+    {
+        margin-left: 285px;
+    }
+</style>
+<script>
+    var marker;
+    var ubicacion;
+    function initMap() {   
+        ubicacion = {lat: 4.7, lng: -74.05};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: ubicacion
+        });
+        if(document.getElementById('id_latitud').value=="" || document.getElementById('id_longitud').value == "")
+        {
+            marker = new google.maps.Marker({
+                position: ubicacion,
+                map: map   
+            });
+        }
+        else{
+            var la = parseFloat(document.getElementById('id_latitud').value);
+            var lo = parseFloat(document.getElementById('id_longitud').value);
+            ubicacion = {lat:la,lng:lo};
+            marker = new google.maps.Marker({
+                position: ubicacion,
+                map: map
+            });
+        }
+        google.maps.event.addListener(map, 'click', function(event) {
+
+            document.getElementById('id_latitud').value= event.latLng.lat();
+            document.getElementById('id_longitud').value = event.latLng.lng();
+            marker.setMap(null);
+            marker = new google.maps.Marker({
+                position: {lat:event.latLng.lat(), lng:event.latLng.lng()},
+                map: map,     
+            });
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-KWY7GbBqI7lUeRsrD2BqSzMNbhWCd-4&callback=initMap">
+</script>
+<form method="post" class="form-horizontal" role="form">
+    {% csrf_token %}
+    <div class="form-group">
+        <h1>Agregar Georeferenciación</h1><br>
+        <div><label>Descripción:</label>{{form.descripcion}}</div><br><br>
+        <div><label>Longitud:</label>{{form.longitud}}</div><br><br>
+        <div><label>Latitud:</label>{{form.latitud}}</div><br><br>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </div>
+    <h3>Ubicación</h3>
+    <div id="map"></div>
+</form>
+{% endblock %}

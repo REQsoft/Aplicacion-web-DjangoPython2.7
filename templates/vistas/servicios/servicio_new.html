@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<style>
+    form
+    {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-top: -260px;
+        margin-left: -190px;        
+    }
+    h1
+    {
+        margin-left: 140px;
+    }
+    textarea
+    {
+        resize: none;
+        width: 600px;
+        height: 110px;
+    }
+    button
+    {
+        margin-top: 8px;
+        float: right;
+    }
+    label
+    {
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 150px;
+        text-align: left;
+        margin-right: 10px;
+    }
+    input 
+    {
+        display: inline-block;
+        float: left;
+    }
+</style>
+<form method="post">
+    {% csrf_token %}
+    <h1>Agregar Servicio</h1><br>
+    <div><label for="id_conexion">Nombre Conexión:</label>{{form.conexion}}</div>
+    <div><label>Rol del Serivicio:</label>{{form.rol}}</div>
+    <div><label>Nombre de servicio:</label>{{form.nombre}}</div>
+    <div><label for="id_sql">Sentencia SQL:</label></div><div>{{form.sql}}</div><br>
+    <div><label for="id_descripcion">Descripcion:</label></div><div>{{form.descripcion}}</div>
+    <div><button class="btn btn-primary" type="submit">Guardar</button></div>
+</form>
+{% endblock %}

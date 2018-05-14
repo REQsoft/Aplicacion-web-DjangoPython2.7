@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<style>
+    h1
+    {
+        font-size: 50px;
+        text-align: center;
+    }
+    label
+    {
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 250px;
+        text-align: right;
+        padding-top: 10px;
+        margin-right: 10px;
+    }
+    select
+    {
+        display: inline-block;
+        float: left;
+    }
+    #id_imagen
+    {
+        margin-left: 258px;
+    }
+    button
+    {
+        display: inline-block;
+        margin-right: 5px;
+        display: inline-block;
+        float: left;
+    }
+    .btn1
+    {
+        margin-left: 480px;
+    }
+    textarea
+    {
+        resize: none;
+        width: 600px;
+        height: 130px;
+    }
+    input
+    {
+        width: 300px;
+    }
+</style>
+<form enctype="multipart/form-data" method="post">{% csrf_token %}
+    <h1>Parametrización</h1><br>
+    <div><label>Nombre:</label>{{form.nombre}}<br>
+        <label>Lema:</label><!--<input type="date" name="fecha" id="id_fecha">-->
+        {{form.lema}}<br>
+        <label>Imagen:</label>{{form.imagen}}
+        <label>Informacion:</label>{{form.informacion}}<br>
+        <label>Misión:</label>{{form.mision}}<br>
+        <label>Visión:</label>{{form.vision}}<br>
+        <h1>Estado Servicios</h1><br>
+        <div>
+        <label>Estado Directorio:</label>{{form.estado_directorio}}<br>
+        <label>Estado Artículo:</label>{{form.estado_articulo}}<br>
+        <label>Estado Localización:</label>{{form.estado_localizacion}}<br>
+        <label>Estado Hoja de Vida:</label>{{form.hoja_de_vida}}<br>
+        <label>Estado Oferta Academica:</label>{{form.oferta_academica}}<br>
+        <label>Estado Notas:</label>{{form.nota_semestre}}<br>
+        <label>Estado Información Materia:</label>{{form.informacion_materia}}<br>
+        <label>Estado Lista Estudiantes:</label>{{form.lista_estudiantes}}</div><br>
+    </div><br><br><br><br><br>
+    <div>
+        <button class="btn btn-success btn1" type="submit">Guardar</button> 
+    </div>
+    <div>
+        <a href="{% url 'principal:articulo_listar' %}"><button class="btn btn-primary">Cancelar</button></a><br><br>
+    </div>
+</form>
+{% endblock %}

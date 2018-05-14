@@ -1,0 +1,154 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<script language="JavaScript" type="text/javascript">
+
+    window.onload = function()
+    {
+        document.getElementById("id_bd").style.display = "none";
+        document.getElementById("id_contrasena").setAttribute("type","password");
+    }
+
+    function selecOp() 
+    { 
+        var text_motor=document.getElementById("id_motor"); 
+        var text_puerto=document.getElementById("id_puerto"); 
+        var sel_bd1=document.getElementById("id_bd1");
+        var text_bd=document.getElementById("id_bd");
+        if (text_motor.selectedIndex==0)
+        {
+            text_puerto.value=""; 
+        }
+        if (text_motor.selectedIndex==1)
+        {
+            text_puerto.value="5432"; 
+            text_bd.style.display="none";
+            sel_bd1.style.display="block";
+
+        }
+        if (text_motor.selectedIndex==2)
+        {
+            text_puerto.value="1521"; 
+            text_bd.style.display="block";
+            sel_bd1.style.display="none";
+
+        }
+        if (text_motor.selectedIndex==3)
+        {
+            text_puerto.value="3306"; 
+            text_bd.style.display="none";
+            sel_bd1.style.display="block";
+
+        }
+
+    } 
+
+    function selec() 
+    { 
+        var text_motor=document.getElementById("id_motor"); 
+        var text_puerto=document.getElementById("id_puerto"); 
+        var sel_bd1=document.getElementById("id_bd1");
+        var text_bd=document.getElementById("id_bd");
+
+        if (text_motor.selectedIndex==1)
+        {
+
+            document.getElementById("id_bd").value = document.getElementById("id_bd1").value;
+        }
+
+        if (text_motor.selectedIndex==3)
+        {
+
+            document.getElementById("id_bd").value = document.getElementById("id_bd1").value;
+        }
+
+    } 
+
+    function listarbd(){
+        $.ajax({
+            method: "GET",
+            url: "/../listarbd",
+            data: { motor: $("#id_motor").val(), servidor: $("#id_ip").val(), usuario:  $("#id_usuario").val(), contrasenia:  $("#id_contrasena").val(), puerto:$("#id_puerto").val() }
+        })
+            .done(function( msg ) {
+            $("#bds").html(msg);
+        });
+    }
+</script>
+
+<style>
+    form
+    {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-top: -220px;
+        margin-left: -200px;        
+    }
+    h1
+    {
+        margin-left: 80px;
+        font-size: 50px;
+    } 
+    #id_bd1
+    {
+        width: 185px;
+
+    }
+    label
+    {
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 250px;
+        text-align: right;
+        margin-right: 10px;
+    }
+    input 
+    {
+        display: inline-block;
+        float: left;
+    }
+    button
+    {
+        display: inline-block;
+        margin-right: 5px;
+        float:right;
+    }
+    #motor
+    {
+        margin-bottom: 10px;
+    }
+    #id_bd
+    {
+        margin-bottom: 18px;
+    }
+</style>
+
+<form method="post" class="form-horizontal" role="form">
+    {% csrf_token %}
+    <div class="form-group">
+        <h1>Agregar Conexión</h1><br>
+        <div><label>Nombre de Conexion:</label>{{form.nombre}}</div><br><br>
+        <div><label>Dirección IP:</label>{{form.ip}}</div><br><br>
+        <div id="motor" onchange="selecOp()">
+            <label>Motor Base de Datos:</label>{{form.motor}}
+        </div>
+        <div><label>Puerto Base de Datos:</label>{{form.puerto}}</div><br><br>
+        <div><label>Usuario:</label>{{form.usuario}}</div><br><br>
+        <div><label>Contraseña:</label>{{form.contrasena}}</div><br><br>
+        <div><label>Base de Datos:</label>{{form.bd}}
+            <div id="bds">
+                <select id="id_bd1" style="display: table">
+                    <option></option>
+                </select>
+            </div>
+        </div>
+        <div><br>
+            <button class="btn btn-primary" type="submit" onclick="selec();" >Guardar</button>
+            <button class="btn btn-primary" onclick="listarbd();">Listar Base de Datos</button>
+        </div>
+
+    </div>
+</form>
+{% endblock %}

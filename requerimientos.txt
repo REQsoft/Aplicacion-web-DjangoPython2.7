@@ -1,0 +1,13 @@
+awesome-package==1.10.3
+cx-Oracle==6.0
+Django==1.10.3
+django-adminlte==1.2
+django-adminlte2==0.1.6
+djangorestframework==3.6.4
+olefile==0.44
+Pillow==4.2.1
+psycopg2==2.7.3
+PyMySQL==0.7.11
+PyMySQL3==0.5
+pytz==2017.2
+SQLAlchemy==1.1.13

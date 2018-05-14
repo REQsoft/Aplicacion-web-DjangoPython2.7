@@ -1,0 +1,44 @@
+{% extends 'base/base_login.html' %}
+{% block title %}
+Login
+{% endblock %}
+{% block logo %}
+<div class="login-logo">
+    <div class="contenido row text-center" id="contenido" >
+        <div class="">
+           <h1 class="texto" style="font-size: 70px; user-select: none; line-height: 1.5;"><b>BIENVENIDO</b></h1>      
+        </div>
+    </div>
+</div>
+{% endblock %}
+{%block content%}
+<style>
+    .login-page, .register-page
+    {
+        background: #357CA5;
+    }
+</style>
+{% block login_form %}
+<form action="" method="post">{% csrf_token %}
+    {% if message %} 
+    <p class="login-box-msg" style="color: red;">{{ message }}</p>
+    {% endif %}
+    <div class="form-group has-feedback">
+        <input name="username" class="form-control" placeholder="Correo" autocomplete="off">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+    </div>
+    <div class="form-group has-feedback">
+        <input type="password" name="password" class="form-control" placeholder="Contraseña" 
+               autocomplete="off">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+        </div>
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
+        </div>
+    </div>
+</form>
+{% endblock login_form %}
+{%endblock%}

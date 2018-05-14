@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Dependencia</td>
+            <td>Extensión</td>
+            <td>Línea directa</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if directorio %}
+        {% for directorio in directorio %}
+        
+        <tr>
+            <td>{{directorio.id}}</td>
+            <td>{{directorio.dependencia}}</td>
+            <td>{{directorio.extension}}</td>
+            <td>{{directorio.linea_directa}}</td>
+            <td><a href="{% url 'principal:directorio_editar' directorio.id %}"><button class="btn btn-primary">Editar</button></a>
+            </td>
+            <td><a href="{% url 'principal:directorio_eliminar' directorio.id %}"><button class="btn btn-danger">Eliminar</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No existen directorios</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}
