@@ -7,7 +7,7 @@ from adminapp.models import Conexion, Sql, Directorio, Localizacion, Articulo, P
 from adminapp.classes import Conectar
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView, DetailView
-from django.url import reverse
+from django.urls import reverse
 from adminapp.serializers import ArticuloSerializer, DirectorioSerializer, LocalizacionSerializer, ParametrizacionSerializer, ServicioSerializer
 from rest_framework import generics, viewsets,status
 from rest_framework.views import APIView
@@ -296,11 +296,11 @@ def listaEstudiantes(self, obj, servicio, conexion):
         print(list)
         for i in list:
             list1.append(i[0])
-            list2.append(i[2])
-            list3.append(i[3])
-            list4.append(i[4])
-            list5.append(i[5])
-            list6.append(i[6])
+            list2.append(i[1])
+            list3.append(i[2])
+            list4.append(i[3])
+            list5.append(i[4])
+            list6.append(i[5])
 
         j=0
         materias = []
@@ -402,13 +402,11 @@ def consultaNotas(self, obj, servicio, conexion):
             list3.append(i[2])
             list4.append(i[3])
             list5.append(i[4])
-            list6.append(i[5])
-            list7.append(i[6])
 
         j=0
         materias = []
         while j<len(list1):
-            materias.append({'codigo_estudiante':list1[j],'codigo_materia':list2[j],'materia':list5[j], 'nota':list6[j], 'faltas':list7[j]})
+            materias.append({'codigo_estudiante':list1[j],'codigo_materia':list2[j],'materia':list3[j], 'nota':list4[j], 'faltas':list5[j]})
             j+=1
         
         serializer = json.dumps(materias)

@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^$', login_required(bienvenido), name='bienvenido'),
     #Urls para gestionar conexiones.
     url(r'^nconexion$', login_required(conexion_new), name='conexion_crear'),
-    url(r'^lconexion$',login_required(conexion_list), name='conexion_listar'),
+    url(r'^lconexion$',login_required(conexion_list), name='conexion_listar'), 
     url(r'^edconexion/(?P<id_conexion>\d+)/$', login_required(conexion_edit), name='conexion_editar'),
     url(r'^elconexion/(?P<id_conexion>\d+)/$', login_required(conexion_delete), name='conexion_eliminar'), 
     #Urls para gestionar servicios.

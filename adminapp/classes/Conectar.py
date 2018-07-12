@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import psycopg2, psycopg2.extras
 import pymysql
 import cx_Oracle
